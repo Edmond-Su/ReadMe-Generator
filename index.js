@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs")
 const generateMarkdown = require("./utils/generateMarkdown.js")
+const filePath = "./output/README.md"
 
 // TODO: Include packages needed for this application
 
@@ -55,7 +56,9 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-// function writeToFile("./output/README.md", data) { }
+function writeToFile(filelocation, data) {
+    fs.writeFile(filelocation, data, (err) => err ? console.log(err) : console.log("README.md had been generated"))
+}
 
 // TODO: Create a function to initialize app
 function init() {
@@ -63,7 +66,8 @@ function init() {
         .prompt(questions)
         .then((answers) => {
             console.log(answers)
-            // generateMarkdown(answers)
+            const readme = generateMarkdown(answers)
+            writeToFile(filePath, readme)
         })
 }
 

@@ -1,11 +1,11 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {
+function renderLicenseBadge(license, link) {
   if (license == "None") {
     return ""
   } else {
     license = license.replace(" ", "_")
-    return `https://img.shields.io/badge/License-${license}-blue.svg`
+    return `[![GitHub License](https://img.shields.io/badge/License-${license}-blue.svg)](${link})`
   }
 }
 
@@ -28,54 +28,72 @@ function renderLicenseLink(license) {
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  if (license == "") {
+  if (license == "None") {
     return ""
   } else {
-    return `
-    ## License
-    This project is licensed under the ${license} license
-    `
+    return `## License
+    
+This project is licensed under the ${license} license`
   }
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  const licBadge = renderLicenseBadge(data.license)
   const licLink = renderLicenseLink(data.license)
+  const licBadge = renderLicenseBadge(data.license, licLink)
   const licSection = renderLicenseSection(data.license)
   return `
-  # ${data.title}
+# ${data.projectName}
 
-  [![GitHub License](${licBadge})](${licLink})
+${licBadge}
 
-  ## Description
-  ${data.desc}
+## Description
 
-  ## Table of Contents
+${data.desc}
 
-  *[Installation](#Installation)
+## Table of Contents
 
-  *[Usage](#Usage)
+* [Installation](#installation)
 
-  *[License](#License)
+* [Usage](#usage)
 
-  *[Contributing](#Contributing)
+* [License](#license)
 
-  *[Tests](#Tests)
+* [Contributing](#contributing)
 
-  *[Questions](#Questions)
+* [Tests](#tests)
 
-  ## Installation
-  ~~~
-  ${data.install}
-  ~~~
+* [Questions](#questions)
 
-  ##Usage
-  ${data.repoUse}
+## Installation
 
-  ##
-  ${licSection}
+To install the necessary dependencies, run the following command:
+~~~
+${data.install}
+~~~
 
+## Usage
+
+${data.repoUse}
+
+${licSection}
+
+## Contributing
+
+${data.repoContribute}
+
+## Tests
+
+To run tests, run the following command:
+~~~
+${data.test}
+~~~
+
+## Questions
+
+Here is my Github: [ ${data.github} ](https://github.com/${data.github})
+
+or you can send any questions to my email: ${data.email}
 
 `;
 }
