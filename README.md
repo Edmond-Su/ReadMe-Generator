@@ -20,7 +20,7 @@ node index.js
 ```
 Once run the application will ask the user questions through the CLI, answer the questions accordingly and once all the questions have been answered the application will create a README.md file for the user, using the answers given, in the output folder.
 
-A walkthrough video can be found [here](./assets/videos/ReadMe%20Generator%20Walkthrough.mkv).
+A walkthrough video can be found [here](https://drive.google.com/file/d/1PPJi1AlizPm8wzNZHZzkFM5LgT7BViU5/view?usp=sharing).
 
 ## Credits
 
